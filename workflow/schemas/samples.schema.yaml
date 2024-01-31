@@ -13,5 +13,5 @@ properties:
     description: path to second FASTQ file (leave empty in case of single-end)
 
 required:
-  - sample_name
+  - sample
   - fq1
