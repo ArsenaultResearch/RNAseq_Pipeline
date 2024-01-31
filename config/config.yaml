@@ -1,0 +1,11 @@
+# path or URL to sequencing sample sheet (TSV format, columns: sample, fq1, fq2)
+samples: config/samples.tsv
+
+# path to reference genome fasta
+ref_genome: resources/genome.fasta
+
+# path to reference annotation in gtf format
+ref_annotation: resources/genome.gtf
+
+params:
+  star: ""
