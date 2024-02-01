@@ -3,3 +3,6 @@ resources/**
 logs/**
 .snakemake
 .snakemake/**
+data/**
+qc/**
+.DS_Store
