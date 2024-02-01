@@ -1,3 +1,6 @@
+import glob
+import pandas as pd
+from snakemake.utils import validate
 from snakemake.utils import min_version
 
 ##### set minimum snakemake version #####
@@ -22,7 +25,14 @@ include: "rules/align.smk"
 
 ##### target rules #####
 
+sample_file=(
+    pd.read_csv(config["samples"], sep="\t", dtype={"sample": str})
+    .set_index("sample", drop=False)
+    .sort_index()
+)
+SAMPLES=sample_file['sample'].tolist()
 
 rule all:
     input:
-        get_final_output(),
+        expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES),
+        qc="qc/multiqc.html"

@@ -1,6 +1,6 @@
-sample	fq1	fq2	
-A	A.1.fq.gz	A.2.fq.gz		
-B	B.1.fq.gz	B.2.fq.gz		
-C	C.1.fq.gz	C.2.fq.gz		
-D	D.1.fq.gz	D.2.fq.gz		
-E	E.1.fq.gz	E.2.fq.gz		
+sample	fq1	fq2
+Lerg_4_0_1	data/P423_SArse17452_A03v1_Lerg_4_0_1_S17_L001_R1_001.fastq.gz	data/P423_SArse17452_A03v1_Lerg_4_0_1_S17_L001_R2_001.fastq.gz
+Lerg_4_0_10	data/P423_SArse17452_B04v1_Lerg_4_0_10_S26_L001_R1_001.fastq.gz	data/P423_SArse17452_B04v1_Lerg_4_0_10_S26_L001_R2_001.fastq.gz
+Lerg_4_0_11	data/P423_SArse17452_C04v1_Lerg_4_0_11_S27_L001_R1_001.fastq.gz	data/P423_SArse17452_C04v1_Lerg_4_0_11_S27_L001_R2_001.fastq.gz
+Lerg_4_0_12	data/P423_SArse17452_D04v1_Lerg_4_0_12_S28_L001_R1_001.fastq.gz	data/P423_SArse17452_D04v1_Lerg_4_0_12_S28_L001_R2_001.fastq.gz
+Lerg_4_0_13	data/P423_SArse17452_E04v1_Lerg_4_0_13_S29_L001_R1_001.fastq.gz	data/P423_SArse17452_E04v1_Lerg_4_0_13_S29_L001_R2_001.fastq.gz

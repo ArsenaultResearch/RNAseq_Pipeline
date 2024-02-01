@@ -2,7 +2,7 @@ rule align_1p:
     input:
         unpack(get_trimmed_fq),
         index="resources/star_genome",
-        gtf=ref_annotation,
+        gtf=config["ref_annotation"],
     output:
         aln="results/star_1p/{sample}_Aligned.sortedByCoord.out.bam",
         sj="results/star_1p/{sample}_SJ.out.tab",
@@ -21,11 +21,13 @@ rule align_2p:
     input:
         unpack(get_trimmed_fq),
         index="resources/star_genome",
-        gtf=ref_annotation,
-        SJfiles=unpack(get_sj)
+        gtf=config["ref_annotation"],
+        SJfiles=get_sj
     output:
         aln="results/star_2p/{sample}_Aligned.sortedByCoord.out.bam",
         reads_per_gene="results/star_2p/{sample}_ReadsPerGene.out.tab",
+        log="results/star_2p/{sample}.Log.out",
+        log_final="results/star_2p/{sample}.Log.final.out",
     log:
         "logs/star_2p/{sample}.log",
     params:

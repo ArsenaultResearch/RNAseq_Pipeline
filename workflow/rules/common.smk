@@ -28,36 +28,41 @@ def get_fastq(wildcards):
 
 def is_single_end(sample):
     """Return True if sample-group is single end."""
-    return pd.isnull(samples.loc["sample", "fq2"])
+    return pd.isnull(samples.loc[sample, "fq2"])
+
+# def get_trimmed_fq(wildcards):
+#     """Get trimmed reads of given sample-group."""
+#     if not is_single_end(**wildcards):
+#         # paired-end sample
+#         return expand(
+#             "results/trim_galore/{sample}_R{nr}.fq.gz",
+#             nr=[1, 2],
+#             **wildcards
+#         )
+#     # single end sample
+#     return "results/trim_galore/{sample}_trimmed.fq.gz".format(**wildcards)
 
 def get_trimmed_fq(wildcards):
     """Get trimmed reads of given sample-group."""
     if not is_single_end(**wildcards):
         # paired-end sample
-        return expand(
-            "results/trim_galore/{sample}_R{nr}.fq.gz",
-            nr=[1, 2],
-            **wildcards
-        )
+        return {"fq1": "results/trim_galore/{sample}_R1.fq.gz".format(**wildcards), "fq2": "results/trim_galore/{sample}_R2.fq.gz".format(**wildcards) }
     # single end sample
-    return "results/trim_galore/{sample}_trimmed.fq.gz".format(**wildcards)
+    return {"fq1": "results/trim_galore/{sample}_R1.fq.gz".format(**wildcards)}
 
-def get_sj(wildcards):
+SAMPLES=samples['sample'].tolist()
+
+def get_sj(wilcards):
     """Collect the Star_1p SJ files to send to 2pass alignment"""
     return expand(
         "results/star_1p/{sample}_SJ.out.tab",
-        **wildcards
+        sample=SAMPLES
     )
-
-def get_final_output():
-    final_output = expand(
-        "results/star_2p/{sample}_ReadsPerGene.out.tab",
-        **wildcards
-    )
+    
 
 def get_2p(wildcards):
     """Collect the Star_2p alignment files to verify multiQC can run"""
     return expand(
         "results/star_2p/{sample}_ReadsPerGene.out.tab",
-        **wildcards
+        sample=SAMPLES
     )
