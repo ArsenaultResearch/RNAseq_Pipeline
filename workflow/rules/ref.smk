@@ -18,7 +18,7 @@ rule bwa_index:
     log:
         "logs/bwa_index.log",
     resources:
-        mem_mb=369000,
+        mem_mb=10000,
     cache: True
     wrapper:
         "v3.3.6/bio/bwa/index"

@@ -1,0 +1,8 @@
+__default__:
+    partition: "shared"
+    time: 9000
+    nodes: 1
+    mem: 5000
+    output: "logs/slurm/slurm-%j.out"
+
+
