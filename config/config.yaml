@@ -7,6 +7,10 @@ ref_genome: resources/Lerg_assemblyV1.fasta
 # path to reference annotation in gtf format
 ref_annotation: resources/td_v0.gtf
 
+# path to the vcf of variants you want counts from
+compute_aserc: True
+snp_vcf: "" 
+
 # add the ENCODE options for STAR
 params:
   star: "--outFilterType BySJout --outFilterMultimapNmax 20 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 999 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --alignIntronMax 1000000 --alignMatesGapMax 1000000"

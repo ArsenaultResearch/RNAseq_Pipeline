@@ -36,3 +36,5 @@ rule all:
     input:
         expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES),
         qc="qc/multiqc.html"
+        if config["compute_aserc"]:
+            expand("results/aserc/{sample}_aserc.csv",sample=SAMPLES)
