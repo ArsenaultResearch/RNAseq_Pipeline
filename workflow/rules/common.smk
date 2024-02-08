@@ -19,6 +19,13 @@ wildcard_constraints:
 
 ##### Helper functions #####
 
+def get_final_output():
+    final_output = expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES),
+    final_output.append("qc/multiqc.html")
+    if config["compute_aserc"]:
+        final_output.extend(expand("results/aserc/{sample}_aserc.csv",sample=SAMPLES))
+    return final_output
+
 def get_fastq(wildcards):
     """Get fastq files of given sample-group."""
     fastqs = samples.loc[(wildcards.sample), ["fq1", "fq2"]].dropna()
@@ -30,17 +37,6 @@ def is_single_end(sample):
     """Return True if sample-group is single end."""
     return pd.isnull(samples.loc[sample, "fq2"])
 
-# def get_trimmed_fq(wildcards):
-#     """Get trimmed reads of given sample-group."""
-#     if not is_single_end(**wildcards):
-#         # paired-end sample
-#         return expand(
-#             "results/trim_galore/{sample}_R{nr}.fq.gz",
-#             nr=[1, 2],
-#             **wildcards
-#         )
-#     # single end sample
-#     return "results/trim_galore/{sample}_trimmed.fq.gz".format(**wildcards)
 
 def get_trimmed_fq(wildcards):
     """Get trimmed reads of given sample-group."""

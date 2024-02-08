@@ -26,16 +26,6 @@ include: "rules/aserc.smk"
 
 ##### target rules #####
 
-sample_file=(
-    pd.read_csv(config["samples"], sep="\t", dtype={"sample": str})
-    .set_index("sample", drop=False)
-    .sort_index()
-)
-SAMPLES=sample_file['sample'].tolist()
-
 rule all:
     input:
-        expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES),
-        qc="qc/multiqc.html"
-        if config["compute_aserc"]:
-            expand("results/aserc/{sample}_aserc.csv",sample=SAMPLES)
+        get_final_output(),
