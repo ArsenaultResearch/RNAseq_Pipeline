@@ -20,7 +20,7 @@ wildcard_constraints:
 ##### Helper functions #####
 
 def get_final_output():
-    final_output = expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES),
+    final_output = expand("results/star_2p/{sample}_ReadsPerGene.out.tab",sample=SAMPLES)
     final_output.append("qc/multiqc.html")
     if config["compute_aserc"]:
         final_output.extend(expand("results/aserc/{sample}_aserc.csv",sample=SAMPLES))
@@ -62,3 +62,10 @@ def get_2p(wildcards):
         "results/star_2p/{sample}_ReadsPerGene.out.tab",
         sample=SAMPLES
     )
+
+def choose_genome(wildcards):
+    if config["compute_aserc"]:
+        final_output = config["ref_genome"].replace('.fasta','.mask.fasta')
+    else:
+        final_output = config["ref_genome"]
+    return {"fasta": final_output}

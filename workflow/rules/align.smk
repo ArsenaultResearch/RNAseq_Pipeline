@@ -13,7 +13,7 @@ rule align_1p:
         extra=lambda wc, input: f'--outSAMtype BAM SortedByCoordinate --sjdbGTFfile {input.gtf} {config["params"]["star"]}',
     threads: 12
     resources:
-        mem_mb=20000,
+        mem_mb = lambda wildcards, attempt: attempt * 20000,
     wrapper:
         "v3.3.6/bio/star/align"
 
@@ -35,6 +35,6 @@ rule align_2p:
         extra=lambda wc, input: f'--outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --sjdbGTFfile {input.gtf} --sjdbFileChrStartEnd {input.SJfiles} {config["params"]["star"]}',
     threads: 12
     resources:
-        mem_mb=20000,
+        mem_mb = lambda wildcards, attempt: attempt * 20000,
     wrapper:
         "v3.3.6/bio/star/align"

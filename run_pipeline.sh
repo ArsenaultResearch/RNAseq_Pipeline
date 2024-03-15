@@ -4,7 +4,7 @@
 #SBATCH -e err
 #SBATCH -p shared
 #SBATCH -n 1
-#SBATCH -t 1-00:00
+#SBATCH -t 3-00:00
 #SBATCH --mem=10000
 
 CONDA_BASE=$(conda info --base)

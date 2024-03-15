@@ -5,11 +5,11 @@ samples: config/samples.tsv
 ref_genome: resources/Lerg_assemblyV1.fasta
 
 # path to reference annotation in gtf format
-ref_annotation: resources/td_v0.gtf
+ref_annotation: resources/merged.sort.gtf
 
 # path to the vcf of variants you want counts from
 compute_aserc: True
-snp_vcf: "" 
+snp_vcf: resources/Lerg_assemblyV1_E_LergOnly.AlleleFilter2.BestSNPs.recode.vcf
 
 # add the ENCODE options for STAR
 params:
